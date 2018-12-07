@@ -1,0 +1,11 @@
+a.brand-text-component {
+    font-size: 1.6em;
+    margin: auto;
+    width: 100%;
+    text-align: center;
+    color: #ffffff;
+    display: inline-block;
+    white-space: nowrap;
+    text-decoration: none;
+    background-color: transparent;
+}
