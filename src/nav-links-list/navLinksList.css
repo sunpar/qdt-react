@@ -1,0 +1,29 @@
+ul.nav-links-component {
+    margin-top: 0px;
+    margin-bottom: 1rem;
+}
+
+ul.nav-links-component li.nav-link-item {
+    border-top: 1px solid #3D454C;
+    padding: 8px 0px;
+    text-transform: uppercase;
+    cursor: pointer;
+    color: #A8A8A8;
+    font-size: 12px;
+}
+
+ul.nav-links-component li.nav-link-item a.nav-link.active {
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+ul.nav-links-component li.nav-link-item a.nav-link {
+    color: inherit;
+    text-decoration: none;
+    padding-left: 15px;
+    padding-right: 0px;
+    font-weight: 500;
+    display: block;
+    padding: .5rem 1rem;
+}
