@@ -1,25 +1,26 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import './config/qlikConfig';
+import QdtComponent from './qdt-chart/qdtChart';
 
+const testViz = {
+  type: 'QdtViz',
+  props: {
+    type: 'barchart',
+    id: 'JpnjCmh',
+    height: '300px',
+    exportData: true,
+    exportImg: true,
+    exportImgOptions: { width: 600, height: 400, format: 'JPG' },
+    exportPdf: true,
+    exportPdfOptions: { documentSize: { width: 300, height: 150 } }
+  }
+};
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <QdtComponent type={testViz.type} props={testViz.props} />
       </div>
     );
   }
