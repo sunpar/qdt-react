@@ -27,3 +27,8 @@ ul.nav-links-component li.nav-link-item a.nav-link {
     display: block;
     padding: .5rem 1rem;
 }
+
+ul.nav-links-component li.nav-link-item a.nav-link:hover {
+    color: #FFFFFF;
+    font-weight: bold;
+}

@@ -1,0 +1,9 @@
+div.top-bar-component {
+    width: calc(100vw);
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #343a40;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
