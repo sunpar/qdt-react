@@ -6,11 +6,13 @@ import FilterButtonComponent from '../../Presentational/filter-button/filterButt
 import FilterPaneContainer from '../filter-pane-container/filterPaneContainer';
 
 const topBarStyles = {
-  marginLeft: '200px',
-  width: 'calc(100% - 200px)',
+  // marginLeft: '200px',
+  // width: 'calc(100% - 200px)',
+  width: '100%',
   backgroundColor: '#FFFFFF',
   borderBottom: '1px solid #E6E6E6',
-  cursor: 'pointer'
+  cursor: 'pointer',
+  display: 'inline-block'
 };
 
 const selectedDatesStyles = {

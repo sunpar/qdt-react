@@ -25,7 +25,7 @@ FilterButtonComponent.propTypes = {
 	buttonStyles: PropTypes.object,
   iconStyles: PropTypes.object,
   clickHandler: PropTypes.func,
-  text: PropTypes.String
+  text: PropTypes.string
 };
 
 export default FilterButtonComponent;

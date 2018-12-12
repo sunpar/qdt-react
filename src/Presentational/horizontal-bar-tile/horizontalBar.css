@@ -1,7 +1,7 @@
 div.top-bar-component {
     width: calc(100vw);
-    /* position: fixed;
+    position: fixed;
     top: 0;
-    left: 0; */
+    left: 0;
     background-color: #343a40;
 }

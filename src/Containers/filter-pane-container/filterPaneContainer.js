@@ -11,7 +11,8 @@ const filterIconStyles = {
 
 const filterStyles = {
   float: 'right',
-  height: '100%'
+  height: '100%',
+  verticalAlign: 'top'
 };
 
 const filterButtonStyles = {
@@ -22,6 +23,7 @@ const filterText = 'Hide Filters';
 
 const filters = [
   {
+    id: 1,
     type: 'QdtFilter',
     props: {
       cols: ['Age'],
@@ -32,6 +34,7 @@ const filters = [
     }
   },
   {
+    id: 2,
     type: 'QdtFilter',
     props: {
       cols: ['Gender'],
@@ -42,40 +45,44 @@ const filters = [
     }
   },
   {
+    id: 3,
     type: 'QdtFilter',
     props: {
       cols: ['Income'],
-      placeholder: 'Case Owner',
+      placeholder: 'Income',
       expanded: false,
       autoSortByState: 0,
       showStateInDropdown: true
     }
   },
   {
+    id: 4,
     type: 'QdtFilter',
     props: {
       cols: ['Topic'],
-      placeholder: 'Case Owner',
+      placeholder: 'Topic',
       expanded: false,
       autoSortByState: 0,
       showStateInDropdown: true
     }
   },
   {
+    id: 5,
     type: 'QdtFilter',
     props: {
       cols: ['Brand'],
-      placeholder: 'Case Owner',
+      placeholder: 'Brand',
       expanded: false,
       autoSortByState: 0,
       showStateInDropdown: true
     }
   },
   {
+    id: 6,
     type: 'QdtFilter',
     props: {
       cols: ['Region'],
-      placeholder: 'Case Owner',
+      placeholder: 'Region',
       expanded: false,
       autoSortByState: 0,
       showStateInDropdown: true
@@ -87,13 +94,13 @@ const FilterPaneContainer = props => {
   const filterClickHandler = props.clickHandler ? props.clickHandler : () => {};
   return (
     <div className="filter-pane-container">
-      {filters.map(filter => (
-        <div className="filter-pane-filter">
-          <QdtComponent type={filter.type} props={filter.props} />
-        </div>
-      ))}
-      {/* <QdtComponent type={filters.type} props={filters.props} /> */}
-
+      <div className="filter-pane-filter-holder">
+        {filters.map(filter => (
+          <div key={filter.id} className="filter-pane-filter">
+            <QdtComponent type={filter.type} props={filter.props} />
+          </div>
+        ))}
+      </div>
       <FilterButtonComponent
         styles={filterStyles}
         iconStyles={filterIconStyles}

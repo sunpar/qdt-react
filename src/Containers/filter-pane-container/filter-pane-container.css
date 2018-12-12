@@ -1,10 +1,17 @@
 div.filter-pane-container {
     height: 100px;
     width: 100%;
+    overflow: visible;
 }
 
-div.filter-pane-container div.filter-pane-filter {
+div.filter-pane-container div.filter-pane-filter-holder div.filter-pane-filter {
     display: inline-block;
-    width: 300px;
-    margin: 10px;
+    width: 200px;
+    margin: 5px;
+    overflow: visible;
+}
+
+div.filter-pane-container div.filter-pane-filter-holder {
+    display: inline-block;
+    width: calc(100% - 150px);
 }

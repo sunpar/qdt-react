@@ -1,6 +1,20 @@
-.App {
-    height: 100%;
-    width: 100%;
-    font-family: sans-serif;
-    font-size: 13px;
+.grid-container {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: "sidebar main-content";
+}
+
+.grid-container .sidebar {
+    grid-area: sidebar;
+}
+
+.grid-container .main-content {
+    grid-area: main-content;
+    display: flex;
+    flex-direction: column;
+}
+
+.grid-container .main-content .app-content{
+    height: 100%
 }
