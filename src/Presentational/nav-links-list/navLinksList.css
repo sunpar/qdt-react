@@ -32,3 +32,7 @@ ul.nav-links-component li.nav-link-item a.nav-link:hover {
     color: #FFFFFF;
     font-weight: bold;
 }
+
+ul.nav-links-component li.nav-link-item a.nav-link span.link-text {
+    vertical-align: middle;
+}

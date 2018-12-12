@@ -10,7 +10,7 @@ const NavLinksListComponent = props => {
         return (
           <li className="nav-link-item" style={{...link.styles}} key={link.id}>
           <a className="nav-link" href={link.href}>
-            {link.text}
+            {link.iconRender() || null }<span className='link-text'>{link.text}</span>
             </a>
           </li>
         );
@@ -26,9 +26,11 @@ NavLinksListComponent.propTypes = {
       text: PropTypes.string.isRequired,
       id: PropTypes.number.isRequired,
       href: PropTypes.string.isRequired,
+      icon: PropTypes.string,
       styles: PropTypes.object
     })
-  ).isRequired
+  ).isRequired,
+  iconRender: PropTypes.func
 };
 
 export default NavLinksListComponent;

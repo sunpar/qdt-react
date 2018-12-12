@@ -1,0 +1,10 @@
+div.filter-pane-container {
+    height: 100px;
+    width: 100%;
+}
+
+div.filter-pane-container div.filter-pane-filter {
+    display: inline-block;
+    width: 300px;
+    margin: 10px;
+}

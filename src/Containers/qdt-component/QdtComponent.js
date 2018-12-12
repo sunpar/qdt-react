@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import QdtComponents from 'qdt-components';
-import { QlikContext } from '../config/qlikConfig';
+import { QlikContext } from '../../config/qlikConfig';
 
 class QdtComponent extends Component {
   static propTypes = {

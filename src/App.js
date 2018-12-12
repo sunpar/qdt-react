@@ -2,15 +2,15 @@ import React, { Component } from 'react';
 import './App.css';
 import './config/qlikConfig';
 // import QdtComponent from './qdt-chart/qdtChart';
-import SideBarContent from './Containers/sidebar-content/sidebarContent';
-import TopBarContent from './Containers/topbar-content/topbarContent';
+import SideBarContainer from './Containers/sidebar-container/sidebarContainer';
+import TopBarContainer from './Containers/topbar-container/topbarContainer';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <SideBarContent />
-        <TopBarContent />
+        <SideBarContainer />
+        <TopBarContainer />
         {/* <QdtComponent type={testViz.type} props={testViz.props} /> */}
       </div>
     );
