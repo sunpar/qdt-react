@@ -1,0 +1,17 @@
+div.horizontal-section-component {
+    margin: 24px;
+    border-bottom: 1px solid #EFF1F2;
+    box-sizing: border-box;
+}
+
+div.horizontal-section-component div.title {
+    display: block;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 24px;
+    margin-bottom: 16px;
+}
+
+div.horizontal-section-component div.content {
+    padding: 8px;
+}
