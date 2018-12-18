@@ -13,8 +13,8 @@ const qdtConnections = {
   engineApi: true
 };
 
-// const TurnkeyLogInAppID = 'b3f509c3-a568-4f99-a418-464be10f1183'; // turnkey app in dev
-const TurnkeyLogInAppID = '63e167a7-d502-4047-b7fc-796578b8fa69'; // turnkey app in dev
+const TurnkeyLogInAppID = '7d689ddc-56fd-4192-91dc-7fb0a5393b11'; // turnkey app with new calcs
+// const TurnkeyLogInAppID = '63e167a7-d502-4047-b7fc-796578b8fa69'; // turnkey app (old)
 
 const loginConfig = { ...qdtConfig, appId: TurnkeyLogInAppID };
 const qdtComponents = new QdtComponents(loginConfig, qdtConnections);

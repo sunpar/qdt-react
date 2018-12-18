@@ -26,7 +26,7 @@ NavLinksListComponent.propTypes = {
       text: PropTypes.string.isRequired,
       id: PropTypes.number.isRequired,
       href: PropTypes.string.isRequired,
-      icon: PropTypes.string,
+      iconRender: PropTypes.func,
       styles: PropTypes.object
     })
   ).isRequired,
