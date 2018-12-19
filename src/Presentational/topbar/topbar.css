@@ -1,7 +1,8 @@
 div.top-bar-component {
     width: calc(100vw);
-    /* position: fixed;
-    top: 0;
-    left: 0; */
     background-color: #343a40;
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    z-index: 99;
 }

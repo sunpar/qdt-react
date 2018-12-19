@@ -1,0 +1,43 @@
+div.optionsContainer {
+    height: 300px;
+    overflow-y: scroll;
+    padding: 10px;
+}
+
+div.optionsContainer div.optionsInstruc {
+    font-weight: 500;
+    font-size: 20px;
+    text-decoration: underline;
+    margin-bottom: 10px;
+}
+
+div.optionsContainer div.optionsListContainer {
+    border: 1px solid grey;
+    width: 25%;
+    margin-right: 20px;
+    display: inline-block;
+}
+
+div.optionsContainer div.optionsListContainer ul.optionsList {
+    color: black;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+div.optionsContainer div.optionsListContainer ul.optionsList li.selected{
+    color: steelblue;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 700;
+    border: 1px solid blue;
+}
+
+div.optionsContainer div.submitButtonContainer {
+    display: inline-block;
+    vertical-align: top;
+}
+
+div.optionsContainer div.submitButtonContainer button {
+    font-size: 16px;
+    padding: 5px;
+}

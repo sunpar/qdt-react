@@ -4,7 +4,6 @@ import './horizontalSection.css';
 
 const HorizontalSection = props => {
   const styles = { ...props.styles };
-
   return (
     <div
       className="horizontal-section-component"

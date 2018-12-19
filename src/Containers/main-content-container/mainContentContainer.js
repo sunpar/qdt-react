@@ -8,7 +8,7 @@ import './mainContentContainer.css';
 import { QlikContext } from '../../config/qlikConfig';
 
 const tile1 = {
-  titleId: 'segment-summary-tile',
+  tileId: 'segment-summary-tile',
   title: 'Segment Summary',
   chart1: {
     iconRender: () => <img src={audience} alt="Audience" />,
@@ -237,6 +237,22 @@ const tile10 = {
       type: 'map',
       id: 'jcbPwKk',
       height: '540px'
+    }
+  },
+  chart2: {
+    type: 'QdtViz',
+    props: {
+      type: 'map',
+      id: 'mpFtDc',
+      height: '140px'
+    }
+  },
+  chart3: {
+    type: 'QdtViz',
+    props: {
+      type: 'map',
+      id: 'SapCmk',
+      height: '140px'
     }
   }
 };
@@ -478,6 +494,34 @@ class MainContentContainer extends Component {
         obj.on('changed', () => updateState());
         updateState();
       });
+
+    qdtComponents.qDocPromise
+      .then(doc => {
+        return doc.createSessionObject(sentenceObjProps);
+      })
+      .then(obj => {
+        const updateState = () => {
+          obj.getLayout().then(layout => {
+            this.setState(state => {
+              const tile1 = {
+                ...state.tile1,
+                chart1: {
+                  ...state.tile1.chart2,
+                  text1: layout.gender,
+                  text2: layout.age,
+                  text3: layout.income
+                }
+              };
+              return {
+                ...state,
+                tile1
+              };
+            });
+          });
+        };
+        obj.on('changed', () => updateState());
+        updateState();
+      });
   }
 
   render() {
@@ -493,10 +537,10 @@ class MainContentContainer extends Component {
       tile9,
       tile10
     } = this.state;
-
+    
     return (
       <MainContentComponent>
-        <HorizontalSectionComponent title={tile1.title} tileid={tile2.tileId}>
+        <HorizontalSectionComponent title={tile1.title} tileid={tile1.tileId} name={tile1.tileId}>
           <div className="main-content-tile-container-fourths">
             <div className="tile-chart">
               <GlanceBoxComponent {...tile1.chart1} />
@@ -512,7 +556,7 @@ class MainContentContainer extends Component {
             </div>
           </div>
         </HorizontalSectionComponent>
-        <HorizontalSectionComponent title={tile2.title} tileid={tile2.tileId}>
+        <HorizontalSectionComponent title={tile2.title} tileid={tile2.tileId} name={tile2.tileId}>
           <div className="main-content-tile-container">
             <div className="tile-chart">
               <QdtComponent
@@ -534,7 +578,7 @@ class MainContentContainer extends Component {
             </div>
           </div>
         </HorizontalSectionComponent>
-        <HorizontalSectionComponent title={tile3.title} tileid={tile3.tileId}>
+        <HorizontalSectionComponent title={tile3.title} tileid={tile3.tileId} name={tile3.tileId}>
           <div className="main-content-tile-container">
             <div className="tile-chart">
               <QdtComponent
@@ -556,7 +600,7 @@ class MainContentContainer extends Component {
             </div>
           </div>
         </HorizontalSectionComponent>
-        <HorizontalSectionComponent title={tile4.title} tileid={tile4.tileId}>
+        <HorizontalSectionComponent title={tile4.title} tileid={tile4.tileId} name={tile4.tileId}>
           <div className="main-content-tile-container">
             <div className="tile-chart">
               <QdtComponent
@@ -578,7 +622,7 @@ class MainContentContainer extends Component {
             </div>
           </div>
         </HorizontalSectionComponent>
-        <HorizontalSectionComponent title={tile5.title} tileid={tile5.tileId}>
+        <HorizontalSectionComponent title={tile5.title} tileid={tile5.tileId} name={tile5.tileId}>
           <div className="main-content-tile-container">
             <div className="tile-chart">
               <QdtComponent
@@ -600,7 +644,7 @@ class MainContentContainer extends Component {
             </div>
           </div>
         </HorizontalSectionComponent>
-        <HorizontalSectionComponent title={tile6.title} tileid={tile6.tileId}>
+        <HorizontalSectionComponent title={tile6.title} tileid={tile6.tileId} name={tile6.tileId}>
           <div className="main-content-tile-container">
             <div className="tile-chart">
               <QdtComponent
@@ -622,7 +666,7 @@ class MainContentContainer extends Component {
             </div>
           </div>
         </HorizontalSectionComponent>
-        <HorizontalSectionComponent title={tile7.title} tileid={tile7.tileId}>
+        <HorizontalSectionComponent title={tile7.title} tileid={tile7.tileId} name={tile7.tileId}>
           <div className="main-content-tile-container">
             <div className="tile-chart span-3">
               <QdtComponent
@@ -632,7 +676,7 @@ class MainContentContainer extends Component {
             </div>
           </div>
         </HorizontalSectionComponent>
-        <HorizontalSectionComponent title={tile8.title} tileid={tile8.tileId}>
+        <HorizontalSectionComponent title={tile8.title} tileid={tile8.tileId} name={tile8.tileId}>
           <div className="main-content-tile-container">
             <div className="tile-chart span-3">
               <QdtComponent
@@ -642,7 +686,7 @@ class MainContentContainer extends Component {
             </div>
           </div>
         </HorizontalSectionComponent>
-        <HorizontalSectionComponent title={tile9.title} tileid={tile9.tileId}>
+        <HorizontalSectionComponent title={tile9.title} tileid={tile9.tileId} name={tile9.tileId}>
           <div className="main-content-tile-container">
             <div className="tile-chart span-3">
               <QdtComponent
@@ -652,12 +696,26 @@ class MainContentContainer extends Component {
             </div>
           </div>
         </HorizontalSectionComponent>
-        <HorizontalSectionComponent title={tile10.title} tileid={tile10.tileId}>
+        <HorizontalSectionComponent title={tile10.title} tileid={tile10.tileId} name={tile10.tileId}>
           <div className="main-content-tile-container">
             <div className="tile-chart span-3">
               <QdtComponent
                 type={tile10.chart1.type}
                 props={tile10.chart1.props}
+              />
+            </div>
+          </div>
+          <div className="main-content-tile-container">
+            <div className="tile-chart">
+              <QdtComponent
+                type={tile10.chart2.type}
+                props={tile10.chart2.props}
+              />
+            </div>
+            <div className="tile-chart">
+              <QdtComponent
+                type={tile10.chart3.type}
+                props={tile10.chart3.props}
               />
             </div>
           </div>

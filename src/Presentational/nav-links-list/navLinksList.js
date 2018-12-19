@@ -8,9 +8,17 @@ const NavLinksListComponent = props => {
     <ul className="nav-links-component" style={styles}>
       {props.links.map(link => {
         return (
-          <li className="nav-link-item" style={{...link.styles}} key={link.id}>
-          <a className="nav-link" href={link.href}>
-            {link.iconRender() || null }<span className='link-text'>{link.text}</span>
+          <li
+            className="nav-link-item"
+            style={{ ...link.styles }}
+            key={link.id}
+          >
+            <a
+              className={'nav-link' + (link.active ? ' active' : '')}
+              href={link.href}
+            >
+              {link.iconRender() || null}
+              <span className="link-text">{link.text}</span>
             </a>
           </li>
         );
@@ -27,6 +35,7 @@ NavLinksListComponent.propTypes = {
       id: PropTypes.number.isRequired,
       href: PropTypes.string.isRequired,
       iconRender: PropTypes.func,
+      active: PropTypes.boolean,
       styles: PropTypes.object
     })
   ).isRequired,
