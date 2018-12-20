@@ -16,7 +16,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "homepage" : "https://dash.condenast.com/extensions/qdtReact",
+  "homepage" : "https://dash.condenast.com/extensions/turnkey-react",
   "eslintConfig": {
     "extends": "react-app"
   },

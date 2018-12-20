@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { QlikContext } from '../../config/qlikConfig';
+import globals from '../../Util/qlikGlobals';
 import './appSelectionContainer.css';
 
 class AppSelectionContainer extends Component {
@@ -8,8 +9,8 @@ class AppSelectionContainer extends Component {
     this.state = {
       options: [],
       selected: {
-          text: '',
-          variable: ''
+        text: '',
+        variable: ''
       }
     };
     this.handleOptionClick = this.handleOptionClick.bind(this);
@@ -62,6 +63,12 @@ class AppSelectionContainer extends Component {
       }
     };
     eApp
+      //   .then(session => {
+      //     return session.open();
+      //   })
+      //   .then(global => {
+      //     return global.openDoc('e763d33b-a905-4ab8-be7a-0ff0af7a53a0');
+      //   })
       .then(doc => {
         return doc.createSessionObject(segmentProps);
       })
@@ -112,16 +119,25 @@ class AppSelectionContainer extends Component {
   }
 
   handleSubmit() {
-      if(this.state.selected.text.length > 0) {
-          this.onSubmitApp(this.state.selected);
-      } 
+    if (this.state.selected.text.length > 0) {
+      let { eApp, cApp } = this.context;
+      //   eApp
+      //     .then(app => {
+      //       return app.session.close();
+      //     })
+      //     .then(reply => {
+      //       console.log('engine Session Closed', reply);
+      //       this.onSubmitApp(this.state.selected);
+      //     });
+      this.onSubmitApp(this.state.selected);
+    }
   }
 
   render() {
     return (
       <div className="optionsContainer">
         <div className="optionsInstruc">
-            Select an Option below and hit submit
+          Select an Option below and hit submit
         </div>
         <div className="optionsListContainer">
           <ul className="optionsList">
@@ -139,7 +155,9 @@ class AppSelectionContainer extends Component {
           </ul>
         </div>
         <div className="submitButtonContainer">
-          <button className="submitButton" onClick={() => this.handleSubmit()}>Submit</button>
+          <button className="submitButton" onClick={() => this.handleSubmit()}>
+            Submit
+          </button>
         </div>
       </div>
     );

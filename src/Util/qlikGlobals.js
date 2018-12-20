@@ -1,8 +1,8 @@
 const globals = {
-    qlik: null,
-    engine: null,
-    resize: null,
-  };
-  
-  export default globals;
-  
+  qlik: null,
+  engine: null,
+  engineSession: null,
+  resize: null
+};
+
+export default globals;

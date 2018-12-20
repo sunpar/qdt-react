@@ -4,7 +4,13 @@ import SideBarContainer from './Containers/sidebar-container/sidebarContainer';
 import TopBarContainer from './Containers/topbar-container/topbarContainer';
 import MainContentContainer from './Containers/main-content-container/mainContentContainer';
 import AppSelectionContainer from './Containers/app-selection-container/appSelectionContainer';
-import { QlikContext, TurnkeyCalcID, sessionAppConfig } from './config/qlikConfig';
+import {
+  QlikContext,
+  TurnkeyCalcID,
+  qDoc,
+  config,
+  qApp
+} from './config/qlikConfig';
 import globals from './Util/qlikGlobals';
 
 class App extends Component {
@@ -19,29 +25,66 @@ class App extends Component {
   }
 
   handleSubmit(appSelected) {
-    const {qlik, engine} = globals;
-    console.log(qlik, engine);
-    const app = qlik.sessionAppFromApp(TurnkeyCalcID, sessionAppConfig);
-    // const app = engine.createSessionAppFromApp(TurnkeyCalcID).then(app => console.log(app));
-    app.variable
-      .setStringValue(
-        'v.global.input.segmentName',
-        "'" + appSelected.variable + "'"
-      )
-      .then(reply => {
-        console.time('AppReload');
-        return app.doReload();
+    const newConfig = {
+      host: 'swcnpaws219.advancemags.com',
+      isSecure: true,
+      port: 443,
+      prefix: 'cp',
+      identity: config.identity
+    };
+    let engine = qDoc(newConfig, false);
+    let cApp;
+    const session = engine.then(session => session.globalPromise);
+    const eApp = session.then(session =>
+      session.createSessionAppFromApp('59b08097-1b55-4227-b4cd-c306f414ab09')
+    );
+
+    eApp
+      .then(app => {
+        cApp = qApp({ ...newConfig, appId: app.id });
+        cApp.then(app => {
+          app.variable.setStringValue(
+            'v.global.input.segmentName',
+            "'" + appSelected.variable + "'"
+          );
+        });
+        console.log(cApp);
+        console.log(app);
+        return cApp;
       })
-      .then(reply => {
+      .then(() => {
+        console.time('AppReload');
+        return cApp.doReload();
+      })
+      .then(() => {
         console.timeEnd('AppReload');
-        app.getAppLayout(layout => console.log(layout));
+        cApp.getAppLayout(layout => console.log(layout));
       });
 
-    this.setState(state => ({
-      ...state,
-      appSelected: true,
-      cApp: app,
-    }));
+    // engine.then(session => session.open()).then(global => global.openDoc('59b08097-1b55-4227-b4cd-c306f414ab09'));
+    // const app = qlik.sessionAppFromApp(TurnkeyCalcID, sessionAppConfig);
+    // const app = engine.then(global => global.openDoc('522514d3-eedd-4c97-8d92-20e8209258dc'));
+    // .createSessionAppFromApp(TurnkeyCalcID)
+    // .then(app => console.log(app));
+    // app.variable
+    //   .setStringValue(
+    //     'v.global.input.segmentName',
+    //     "'" + appSelected.variable + "'"
+    //   )
+    //   .then(reply => {
+    //     console.time('AppReload');
+    //     return app.doReload();
+    //   })
+    //   .then(reply => {
+    //     console.timeEnd('AppReload');
+    //     app.getAppLayout(layout => console.log(layout));
+    //   });
+
+    // this.setState(state => ({
+    //   ...state,
+    //   appSelected: true,
+    //   cApp: app,
+    // }));
   }
 
   render() {
